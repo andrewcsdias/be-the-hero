@@ -7,6 +7,7 @@
 const express = require('express');
 const routes = require('./routes');
 const cors = require('cors');
+const { errors } = require('celebrate');
 
 const app = express();
 
@@ -15,11 +16,7 @@ app.use(cors());
 app.use(express.json());
 // definir que a aplicação ira usar as rotas definidas na variável routes
 app.use(routes);
+// usar o tratamento de erros do celebrate
+app.use(errors());
 
-/**
- * Bando de dados
- * SQLite com Knex Query Builder
- * Inicializar Knex: npx knex init
- */
-
-app.listen(3333);
+module.exports = app;
